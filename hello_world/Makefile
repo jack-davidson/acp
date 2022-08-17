@@ -2,7 +2,7 @@
 all: clean build
 
 build: helloworld.o
-	${CXX} helloworld.o
+	${CXX} helloworld.o -o helloworld
 
 helloworld.o:
 	${CXX} -c helloworld.cpp
