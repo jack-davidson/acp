@@ -1,11 +1,11 @@
 .POSIX:
 all: clean build
 
-build: helloworld.o
-	${CXX} helloworld.o -o helloworld
+build: lex.o
+	${CXX} lex.o -o lex
 
-helloworld.o:
-	${CXX} -c helloworld.cpp
+lex.o:
+	${CXX} -c lex.cpp
 
 clean:
-	rm -f helloworld.o
+	rm -f lex.o
