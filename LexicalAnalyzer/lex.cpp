@@ -23,6 +23,8 @@ int main()
 	string source = ("I was born in Lousiana down on the ol bayou raised on shrimps and catfish mamas good gumbo. "
 			 "I got the ramblin fever. Said goodbye to ma and pa. Crossed that ol red river and this is "
 			 "what I saw. I saw miles and miles of Texas 1000 stars up in the sky. I saw miles and miles of Texas gonna live here till I die.");
+
+	/* Count occurrences of the word 'is'.  */
 	cout << "substring count: " << countSubstring(source, "is") << '\n';
 	return 0;
 }
