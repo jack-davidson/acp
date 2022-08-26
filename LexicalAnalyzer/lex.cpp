@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 
 using namespace std;
 
@@ -17,8 +18,18 @@ int countSubstring(const string& str, const string& sub)
 
 }
 
-int main()
+int countwords(const char *s, int n)
+{
+	int i;
+	
+	i = 0;
+	while (strtok(s, " ")) {
+		i++;
+	}
+	return 0;
+}
 
+int main()
 {
 	string source = ("I was born in Lousiana down on the ol bayou raised on shrimps and catfish mamas good gumbo. "
 			 "I got the ramblin fever. Said goodbye to ma and pa. Crossed that ol red river and this is "
@@ -26,5 +37,6 @@ int main()
 
 	/* Count occurrences of the word 'is'.  */
 	cout << "substring count: " << countSubstring(source, "is") << '\n';
+	cout << "word count: " << countwords(source.c_str(), source.length()) << '\n';
 	return 0;
 }
