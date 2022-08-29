@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstring>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -18,15 +19,35 @@ int countSubstring(const string& str, const string& sub)
 
 }
 
-int countwords(const char *s, int n)
+int count(string s, char c)
 {
-	int i;
-	
-	i = 0;
-	while (strtok(s, " ")) {
-		i++;
+	int wc;
+
+	wc = 0;
+	for (int i = 0; i < s.length(); i++) {
+		if (s[i] == c) wc++;
 	}
-	return 0;
+	return wc;
+}
+
+int uniquewordcount(string s)
+{
+	map<string, int> words;
+
+	char *b = (char *)malloc(s.length());
+	strcpy(b, s.c_str());
+
+	b = strtok(b, " ");
+	while (b != NULL) {
+		words[b] = 0;
+		b = strtok(NULL, " ");
+	}
+	return words.size() - 2;
+}
+
+int lexicaldensity(string s)
+{
+	return (int)((uniquewordcount(s)/(float)count(s, ' ')) * 100.0 + 0.5);
 }
 
 int main()
@@ -35,8 +56,13 @@ int main()
 			 "I got the ramblin fever. Said goodbye to ma and pa. Crossed that ol red river and this is "
 			 "what I saw. I saw miles and miles of Texas 1000 stars up in the sky. I saw miles and miles of Texas gonna live here till I die.");
 
+	int wordcount = count(source, ' ');
+	int sentencecount = count(source, '.');
+
 	/* Count occurrences of the word 'is'.  */
-	cout << "substring count: " << countSubstring(source, "is") << '\n';
-	cout << "word count: " << countwords(source.c_str(), source.length()) << '\n';
+	cout << "substring count: " << countSubstring(source, "is") << endl;
+	cout << "word count: " << wordcount << endl;
+	cout << "Unique word count: " << uniquewordcount(source) << endl;
+	cout << "Lexical density: " << lexicaldensity(source) << "%" << endl;
 	return 0;
 }
