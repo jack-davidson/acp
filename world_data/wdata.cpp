@@ -25,7 +25,7 @@ struct population {
 
 int main (int argc, char *argv[])
 {
-	string r, column;
+	string r, re;  /* row, row element.  */
 	stringstream row;
 	ifstream f;
 	int i;  /* Column number.  */
@@ -40,12 +40,12 @@ int main (int argc, char *argv[])
 
 		struct population p;
 
-		i = 0; /* Reset column number.  */
-		while(getline(row, column, ',')) {
-			cout << column;
+		i = 0; /* Reset element number.  */
+		while(getline(row, re, ',')) {
+			cout << re;
 			switch(i) {
 			case 0: /* index header */
-				p.index = atoi(column.c_str());
+				p.index = atoi(re.c_str());
 			}
 			/* Append struct to list.  */
 			i++;
