@@ -12,6 +12,7 @@
 #include <sstream>
 #include <fstream>
 #include <string>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -24,16 +25,30 @@ struct population {
 
 int main (int argc, char *argv[])
 {
-	ifstream f;
 	string r, column;
+	stringstream row;
+	ifstream f;
+	int i;  /* Column number.  */
 
 	f.open("mortality_rates.csv");
 
-	/* every row in csv.  */
+	/* Every row in csv.  */
 	while(getline(f, r)) {
-		stringstream row(r);
+		/* Convert string(r) to stringstream(row) for
+		 * use with a columnar getline() call.  */
+		row = stringstream(r);  
+
+		struct population p;
+
+		i = 0; /* Reset column number.  */
 		while(getline(row, column, ',')) {
 			cout << column;
+			switch(i) {
+			case 0: /* index header */
+				p.index = atoi(column.c_str());
+			}
+			/* Append struct to list.  */
+			i++;
 		}
 		cout << endl;
 	}
