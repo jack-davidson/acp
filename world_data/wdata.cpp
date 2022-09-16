@@ -20,7 +20,7 @@ using namespace std;
 struct population {
 	int index;
 	string region;  /* Area/Region/Country */
-	int population;  /* 2000-2005 */
+	float population;  /* 2000-2005 */
 };
 
 int main (int argc, char *argv[])
@@ -42,15 +42,17 @@ int main (int argc, char *argv[])
 
 		i = 0; /* Reset element number.  */
 		while(getline(row, re, ',')) {
-			cout << re;
 			switch(i) {
 			case 0: /* index header */
 				p.index = atoi(re.c_str());
+			case 2:
+				p.region = re;
+			case 15:
+				p.population = atof(re.c_str());
 			}
-			/* Append struct to list.  */
 			i++;
 		}
-		cout << endl;
+		cout << "index=" << p.index << ", region=" << p.region << ", population=" << p.population << endl;
 	}
 
 	f.close();
