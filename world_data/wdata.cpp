@@ -70,9 +70,19 @@ int main (int argc, char *argv[])
 		}
 	}
 
+	int no = sizeof(rates)/sizeof(rates[0])-1;
+	int wrank;
+	int dvrank;
 	for (struct rate p: rates) {
-		cout << "index=" << p.index << ", region=" << p.region << ", rate=" << p.rate << endl;
+		if (p.index == 223) {
+			wrank = no;
+			dvrank = no/2;
+		}
+		no--;
+		//cout << "[" << no++ << "]: index=" << p.index << ", region=" << p.region << ", rate=" << p.rate << endl;
 	}
+	cout << "Throughout World USA ranks at " << wrank << endl;
+	cout << "Throughout developed nations, USA ranks at " << dvrank << endl;
 
 	f.close();
 	return 0;
