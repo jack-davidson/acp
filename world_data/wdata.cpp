@@ -58,6 +58,18 @@ int main (int argc, char *argv[])
 			i++;
 		}
 	}
+	
+	int j;
+	for (i = 0; i < sizeof(rates)/sizeof(rates[0]) - 1; i++) {
+		for (j = 0; j < sizeof(rates)/sizeof(rates[0]) - i - 1; j++) {
+		    if (rates[j].rate > rates[j + 1].rate) {
+			struct rate tmp = rates[j];
+			rates[j] = rates[j+1];
+			rates[j+1] = tmp;
+		    }
+		}
+	}
+
 	for (struct rate p: rates) {
 		cout << "index=" << p.index << ", region=" << p.region << ", rate=" << p.rate << endl;
 	}
